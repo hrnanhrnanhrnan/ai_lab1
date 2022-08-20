@@ -41,7 +41,6 @@ namespace ai_lab1
 
         static async Task Main(string[] args)
         {
-
             SetupKeysAndCreateClients();
 
             Console.WriteLine("---   Welcome to the Höga Kustens Gårdsmusteri Chat Bot   ----");
@@ -80,7 +79,9 @@ namespace ai_lab1
 
                         // if the language of the user input is in english then the response is written as it is to the console
                         // else the response is translated to the language of the user input and is then written to the console
-                        Console.WriteLine($"\t- {(_ = _inputCharacteristics.Language.Iso6391Name == "en" ? response : await GetTranslatedTextAsync(response, "en", _inputCharacteristics.Language.Iso6391Name))}");
+                        Console.WriteLine("\t- {0}", (_ = _inputCharacteristics.Language.Iso6391Name == "en"
+                            ? response 
+                            : await GetTranslatedTextAsync(response, "en", _inputCharacteristics.Language.Iso6391Name)));
                     }
                 }
                 catch (Exception e)
@@ -146,7 +147,8 @@ namespace ai_lab1
             return response.Prediction.TopIntent;
         }
 
-        // call to the translation rest api and pass the input as a request body and the Iso6391Name of the language to translate from and the Iso6391Name of the language to translate to
+        // call to the translation rest api and pass the input as a request body
+        // and the Iso6391Name of the language to translate from and the Iso6391Name of the language to translate to
         static async Task<string> GetTranslatedTextAsync(string input, string isoLangFrom, string isoLangTo)
         {
             string translatedText = "";

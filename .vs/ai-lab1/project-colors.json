@@ -5,6 +5,11 @@
       "ProjectGuid": "975143df-e9c3-42f0-a43e-de8f83871288",
       "DisplayName": "ai-lab1",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 1
