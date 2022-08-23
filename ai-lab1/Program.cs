@@ -43,19 +43,19 @@ namespace ai_lab1
         {
             SetupKeysAndCreateClients();
 
-            Console.WriteLine("---   Welcome to the Höga Kustens Gårdsmusteri Chat Bot   ----");
-            Console.WriteLine("-- What do you want to know? (write only 'quit' to exit) --");
-            Console.WriteLine("   -----------------------------------------------------");
-
+            Console.WriteLine("-------- Welcome to the Höga Kustens Gårdsmusteri Chat Bot --------");
+            Console.WriteLine("|        What do you want to know? (write '*quit' to exit)        |");
+            Console.WriteLine("-------------------------------------------------------------------");
+            
             string userInput = string.Empty;
             _inputCharacteristics = new();
-            while (userInput != "quit")
+            while (!userInput.ToLower().Contains("*quit"))
             {
                 Console.Write("-> ");
                 userInput = Console.ReadLine().ToLower();
                 try
                 {
-                    if (userInput.TrimStart().TrimEnd() != "quit")
+                    if (!userInput.ToLower().Contains("*quit"))
                     {
                         // gets the language the user input is written in and sets the language property of the instance to the detected language
                         _inputCharacteristics.Language = await GetLanguageAsync(userInput);
@@ -93,6 +93,7 @@ namespace ai_lab1
 
             _httpClient.Dispose();
         }
+
         // method to generate response from the qna component
         static async Task<string> GetResponseAsync(InputCharacteristics inputCharacteristics)
         {
