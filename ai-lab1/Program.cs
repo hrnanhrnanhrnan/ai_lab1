@@ -49,13 +49,13 @@ namespace ai_lab1
             
             string userInput = string.Empty;
             _inputCharacteristics = new();
-            while (!userInput.ToLower().Contains("*quit"))
+            while (!userInput.Contains("*quit"))
             {
                 Console.Write("-> ");
                 userInput = Console.ReadLine().ToLower();
                 try
                 {
-                    if (!userInput.ToLower().Contains("*quit"))
+                    if (!userInput.Contains("*quit"))
                     {
                         // gets the language the user input is written in and sets the language property of the instance to the detected language
                         _inputCharacteristics.Language = await GetLanguageAsync(userInput);
